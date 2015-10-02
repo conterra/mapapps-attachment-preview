@@ -33,7 +33,7 @@ Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und l√
               "w": 320,
               "h": 300
             },
-            "type": "TabContent"
+            "type": "AttachmentPreview"
           }
         ]
       },
