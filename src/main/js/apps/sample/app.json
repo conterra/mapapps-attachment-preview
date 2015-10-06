@@ -1,7 +1,10 @@
 {
     "load": {
-        "bundleLocations" : ["localbundles","bundles"],
-        "allowedBundles" : [
+        "bundleLocations": [
+            "localbundles",
+            "bundles"
+        ],
+        "allowedBundles": [
             "system",
             "splashscreen",
             "map",
@@ -12,60 +15,207 @@
             "toolset",
             "toolrules",
             "basemaptoggler",
-            "sample_helloworld"
+            "attachmentpreview",
+            "agssearch",
+            "contentviewer"
         ],
-        "skipBundles" : [],
-        "require" : ["${app}.app"],
-        "i18n": ["bundle"]
+        "skipBundles": [],
+        "require": [
+            "${app}.app"
+        ],
+        "i18n": [
+            "bundle"
+        ]
     },
-    "bundles" : {
-        "map" : {
-            "MapState" : {
-                "initialExtent":{
-                    "xmin" : -1100000,
-                    "ymin" : 4000000,
-                    "xmax" : 3500000,
-                    "ymax" : 8800000,
-                    "spatialReference": {
-                        "wkid": 3857
+    "bundles": {
+        "contentviewer": {
+            "ContentRegistration": {
+                "contentRules": [
+                    {
+                        "info": {
+                            "grid": true,
+                            "valueNotFoundString": "",
+                            "title": "{titel}",
+                            "showDetailsButton": false,
+                            "skipProperties": [
+                                "geometry"
+                            ],
+                            "template": "Typ: {typ}<br />Potenzial: {potenzial}<br /><br />{beschreibung}<br /><br />Erfasst von: {erfasser}<br />Datum: {datum}"
+                        },
+                        "matches": {
+                            "context": {
+                                "mapModelNodeId": "brachflaechen/0"
+                            }
+                        },
+                        "windowSize": {
+                            "w": 320,
+                            "h": 300
+                        },
+                        "type": "AttachmentPreview"
                     }
+                ]
+            },
+            "enabled": true
+        },
+        "agssearch": {
+            "AGSStore": [
+                {
+                    "title": "Brachfl\u00E4chen selektieren",
+                    "description": "",
+                    "omniSearchLabelAttr": "titel",
+                    "omniSearchSearchAttr": "titel",
+                    "idProperty": "objectid",
+                    "url": "http://services.conterra.de/arcgis/rest/services/mapapps/brachen/FeatureServer/0",
+                    "useIn": [
+                        "omnisearch",
+                        "selection"
+                    ],
+                    "filterOptions": {
+                        "suggestContains": false
+                    },
+                    "omniSearchTypingDelay": 500,
+                    "omniSearchPageSize": 20,
+                    "omniSearchDefaultLabel": "Nach Brachfl\u00E4che suchen...",
+                    "fetchIdProperty": true,
+                    "id": "_AGS_STORE_1392372080339",
+                    "pid": "agssearch-AGSStore-0",
+                    "type": "Feature"
+                }
+            ],
+            "enabled": true
+        },
+        "map": {
+            "MapState": {
+                "initialExtent": {
+                    "xmax": 867792.4915261895,
+                    "ymax": 6802085.106900126,
+                    "xmin": 831102.7179493543,
+                    "ymin": 6783090.505371286,
+                    "wkid": 3857
                 }
             },
-            "MapModelFactory" : {
-                "_configData" : {
-                    "maps" :[
+            "MapModelFactory": {
+                "_configData": {
+                    "maps": [
                         {
                             "id": "default",
-                            "glass_pane" : [],
-                            "operationalLayer" : [],
-                            "baseLayer" : [
+                            "glass_pane": [],
+                            "operationalLayer": [
                                 {
-                                    "title": "${service.streets}",
-                                    "service": "streets",
-                                    "enabled" : true
-                                },
+                                    "id": "brachflaechen",
+                                    "service": "brachflaechen",
+                                    "enabled": true,
+                                    "options": {
+                                        "outFields": [
+                                            "*"
+                                        ],
+                                        "mode": 1,
+                                        "editable": true
+                                    },
+                                    "maptip": {
+                                        "content": "<b>{titel}</b><br/>Typ: {typ}<br/>Potenzial: {potenzial}<br/><br/>{beschreibung}",
+                                        "dimensions": {
+                                            "width": 250,
+                                            "height": 100
+                                        }
+                                    },
+                                    "layers": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "baseLayer": [
                                 {
-                                    "title": "${service.topo}",
-                                    "service": "worldTopo",
-                                    "enabled" : false
+                                    "title": "Kombinierte Hintergrundkarte",
+                                    "id": "background2",
+                                    "enabled": true,
+                                    "children": [
+                                        {
+                                            "title": "Grau",
+                                            "enabled": true,
+                                            "id": "background3",
+                                            "service": "grey",
+                                            "maxScale": 20001
+                                        },
+                                        {
+                                            "title": "Luftbild",
+                                            "enabled": true,
+                                            "service": "worldimage",
+                                            "minScale": 20000,
+                                            "children": [
+                                                {
+                                                    "layer": "0",
+                                                    "enabled": true
+                                                },
+                                                {
+                                                    "layer": "1",
+                                                    "enabled": true
+                                                },
+                                                {
+                                                    "layer": "2",
+                                                    "enabled": true
+                                                },
+                                                {
+                                                    "layer": "3",
+                                                    "enabled": true
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
                     ]
                 }
             },
-            "MappingResourceRegistryFactory" : {
-                "_knownServices" :{
+            "MappingResourceRegistryFactory": {
+                "_knownServices": {
                     "services": [
                         {
-                            "id":"worldTopo",
-                            "type":"AGS_TILED",
-                            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+                            "id": "brachflaechen",
+                            "title": "Brachfl\u00E4chen",
+                            "type": "AGS_FEATURE",
+                            "url": "http://services.conterra.de/arcgis/rest/services/mapapps/brachen/FeatureServer",
+                            "layers": [
+                                {
+                                    "title": "Brachfl\u00E4chen",
+                                    "id": 0
+                                }
+                            ],
+                            "options": {
+                                "opacity": 0.75
+                            }
                         },
                         {
-                            "id":"streets",
-                            "type":"AGS_TILED",
-                            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+                            "id": "grey",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "Graustufen"
+                        },
+                        {
+                            "id": "worldimage",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "Luftbild",
+                            "description": "Luftbildaufnahmen der gesamten Welt",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "World Imagery"
+                                },
+                                {
+                                    "id": "1",
+                                    "title": "Low Resolution 15m Imagery"
+                                },
+                                {
+                                    "id": "2",
+                                    "title": "High Resolution 60cm Imagery"
+                                },
+                                {
+                                    "id": "3",
+                                    "title": "High Resolution 30cm Imagery"
+                                }
+                            ]
                         }
                     ]
                 }

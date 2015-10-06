@@ -1,0 +1,76 @@
+{
+    "Bundle-SymbolicName": "attachmentpreview",
+    "Bundle-Version": "1.0.0",
+    "Bundle-Name": "${bundleName}",
+    "Bundle-Description": "${bundleDescription}",
+    "Bundle-Vendor": "con terra GmbH",
+    "Require-Bundle": [{
+            "name": "windowmanager"
+        }, {
+            "name": "contentviewer"
+        }],
+    "Components": [
+        {
+            "name": "ContentRegistration",
+            "impl": "ct.Stateful",
+            "provides": ["ct.contentviewer.ContentRule"],
+            "propertiesConstructor": true,
+            "properties": {
+                "contentWidgetClasses": {
+                    "AttachmentPreview": "attachmentpreview.ContentWidgetFactory"
+                },
+                "contentRules": [
+                    {
+                        "matches": {
+                            "content": {
+                                "adapter": "AttachmentPreview"
+                            }
+                        },
+                        "type": "AttachmentPreview"
+                    }
+                ]
+            }
+        }, {
+            "name": "ContentWidgetFactory",
+            "provides": "attachmentpreview.ContentWidgetFactory",
+            "impl": "contentviewer/_ContentWidgetFactory",
+            "propertiesConstructor": true,
+            "properties": {
+                "imageUrl": "resource('images/')",
+                "typeMapping": {
+                    "AttachmentPreview": {
+                        "info": "attachmentpreview.AttachmentPreview"
+                    },
+                    "Grid": {
+                        "info": "contentviewer.GridContent",
+                        "detail": "contentviewer.AGSDetailView"
+                    }
+                },
+                "ui": {
+                    "Grid": {
+                        "key": "${ui.content.grid.key}",
+                        "value": "${ui.content.grid.value}",
+                        "detailView": "${ui.content.grid.detailView}",
+                        "print": "${ui.content.grid.print}"
+                    },
+                    "Attachment": {
+                        "noAttachmentSupport": "${ui.content.attachment.noAttachmentSupport}",
+                        "detailView": "${ui.content.attachment.detailView}"
+                    }
+                },
+                "widgetProperties": {
+                }
+            },
+            "references": [
+                {
+                    "name": "windowManager",
+                    "providing": "ct.framework.api.WindowManager"
+                },
+                {
+                    "name": "dateAndDomainReplacer",
+                    "providing": "contentviewer.DateAndDomainReplacer"
+                }
+            ]
+        }
+    ]
+}
