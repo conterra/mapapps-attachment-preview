@@ -4,6 +4,7 @@
     "Bundle-Name": "${bundleName}",
     "Bundle-Description": "${bundleDescription}",
     "Bundle-Vendor": "con terra GmbH",
+    "Product-Name": "map.apps Developer Network",
     "Require-Bundle": [{
             "name": "windowmanager"
         }, {
