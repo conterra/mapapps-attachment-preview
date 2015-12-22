@@ -25,7 +25,7 @@ define(["dojo",
         "dojo/text!./templates/AttachmentTab.html"],
     function (dojo, d_array, d_lang, declare, _Widget, _TemplatedMixin, _WidgetsInTemplateMixin, BorderContainer, ContentPane, templateStringContent) {
 
-        var AttachmentPreview = declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin],
+        var AttachmentTab = declare([_Widget, _TemplatedMixin, _WidgetsInTemplateMixin],
 
             {
                 baseClass: "ctInfoContent ctGridContent",
@@ -140,12 +140,12 @@ define(["dojo",
 
             });
 
-        AttachmentPreview.createWidget = function (params, contentFactory, attachments) {
-            var widget = new AttachmentPreview(d_lang.mixin(params, {
+        AttachmentTab.createWidget = function (params, contentFactory, attachments) {
+            var widget = new AttachmentTab(d_lang.mixin(params, {
                 contentFactory: contentFactory,
                 objectAttachments: attachments
             }));
             return widget;
         };
-        return AttachmentPreview;
+        return AttachmentTab;
     });
