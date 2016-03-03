@@ -90,9 +90,10 @@ define(["dojo",
 
                         // check Object for attachments
                         var url = layer.url;
+                        var idProperty = layer.objectIdField;
                         var graphic = this.context.graphic;
-                        var objectID = graphic.attributes.objectid;
-                        var object_url = url + "/" + objectID + "/attachments";
+                        var featureId = graphic.attributes[idProperty];
+                        var object_url = url + "/" + featureId + "/attachments";
 
                         var json = ct_request({
                             url: object_url,
@@ -103,6 +104,10 @@ define(["dojo",
                         });
 
                         json.then(d_lang.hitch(this, function (result) {
+                            if(!result.attachmentInfos){
+                                console.error("Error while requesting attachments");
+                                return;
+                            }
 
                             // if there is at least one attachment -> add attachment-widget as child
                             if (result.attachmentInfos.length > 0) {
