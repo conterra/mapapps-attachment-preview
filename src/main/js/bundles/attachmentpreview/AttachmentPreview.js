@@ -74,7 +74,7 @@ define(["dojo",
                         this._createCustomContent();
                     }
 
-                    this._createAttachmentContent();
+                    this._createAttachmentContent(this.rule.info.showImagePreview);
                 },
 
                 _createGridContent: function () {
@@ -82,7 +82,7 @@ define(["dojo",
                     return gridContent;
                 },
 
-                _createAttachmentContent: function () {
+                _createAttachmentContent: function (showImagePreview) {
                     // check layer for attachments
                     var layer = this.context.graphic.getLayer();
 
@@ -112,6 +112,7 @@ define(["dojo",
                             // if there is at least one attachment -> add attachment-widget as child
                             if (result.attachmentInfos.length > 0) {
 
+                                this.params.showImagePreview = showImagePreview;
                                 var attachmentWidget = AttachmentTab.createWidget(this.params, this.contentFactory, result.attachmentInfos);
                                 var attachmentContentNode = new ContentPane({
                                     title: "Attachments",

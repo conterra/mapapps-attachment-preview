@@ -37,6 +37,7 @@
                             "valueNotFoundString": "",
                             "title": "{titel}",
                             "showDetailsButton": false,
+                            "showImagePreview": true,
                             "skipProperties": [
                                 "geometry"
                             ],

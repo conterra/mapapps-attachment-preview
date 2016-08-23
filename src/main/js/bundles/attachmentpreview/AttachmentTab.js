@@ -34,6 +34,7 @@ define(["dojo",
                 context: null,
                 content: null,
                 contentFactory: null,
+                showImagePreview: true,
                 baseUrl: null,
                 imageUrl: null,
                 _started: false,
@@ -55,9 +56,10 @@ define(["dojo",
 
                     var layer = this.context.graphic.getLayer();
                     var url = layer.url;
+                    var idProperty = layer.objectIdField;
                     var graphic = this.context.graphic;
-                    var objectID = graphic.attributes.objectid;
-                    this.baseUrl = url + "/" + objectID + "/attachments/";
+                    var featureId = graphic.attributes[idProperty];
+                    this.baseUrl = url + "/" + featureId + "/attachments/";
 
                     this._addAttachments();
                 },
@@ -83,7 +85,8 @@ define(["dojo",
                 },
 
                 _addImageContainer: function (attachment) {
-                    var image = "<a href=\"" + this.baseUrl + attachment.id + "\" target=\"_blank\"><image src=\"" + this.baseUrl + attachment.id + "\" width=\"50\" height=\"50\" alt=\"error\"></a>";
+                    var imgUrl = this.showImagePreview ? this.baseUrl + attachment.id : this.imageUrl + "default_icon.png";
+                    var image = "<a href=\"" + this.baseUrl + attachment.id + "\" target=\"_blank\"><image src=\"" + imgUrl + "\" width=\"50\" height=\"50\" alt=\"error\"></a>";
                     var filename = "<a href=\"" + this.baseUrl + attachment.id + "\" target=\"_blank\">" + attachment.name + "</a>";
                     var filesize = attachment.size + " Bytes";
                     var fileType = attachment.contentType;
