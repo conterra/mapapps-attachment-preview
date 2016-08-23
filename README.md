@@ -19,6 +19,7 @@ Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und l�
               "valueNotFoundString": "",
               "title": "{titel}",
               "showDetailsButton": false,
+              "showImagePreview": true,
               "skipProperties": [
                 "geometry"
               ],
@@ -42,3 +43,5 @@ Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und l�
 ```
 
 In diesem Fall wurde für den ersten Tab die Grid-Darstellung für die Attribute der Features gewählt. Wird stattdessen der Wert ```grid: false``` gesetzt, so greift das definierte custom template (```template```).
+
+Über die Eigenschaft ```showImagePreview``` kann festgelegt werden, ob für Bilder-Attachments eine Vorschau gezeigt werden soll. Dieser Wert ist standardmäßig auf ```true``` gesetzt.
