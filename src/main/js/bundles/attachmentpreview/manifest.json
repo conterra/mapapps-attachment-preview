@@ -6,9 +6,11 @@
     "Bundle-Vendor": "con terra GmbH",
     "Product-Name": "devnet-mapapps-attachment-preview",
     "Require-Bundle": [{
-            "name": "windowmanager"
+            "name": "windowmanager",
+            "version": "^3.2.1"
         }, {
-            "name": "contentviewer"
+            "name": "contentviewer",
+            "version": "^3.2.1"
         }],
     "Components": [
         {
