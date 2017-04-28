@@ -3,10 +3,11 @@ The attachment preview bundle enables the user to access a feature's attributes 
 
 The bundle uses the ContentRule interface of the contentviewer bundle and provides a very similar configuration. The first tab is still configurable and able to display the feature's attributes in a grid or custom layout.
 
-### Sample App ###
+Sample App
+------------------
 http://www.mapapps.de/mapapps/resources/apps/downloads_tabcontent/index.html
 
-Anleitung (DE)
+Installation Guide (DE)
 --------------
 Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und lässt sich auch über diesen Konfigurieren. Die Beispielkonfiguration der Sample App zeigt den Aufbau des contentviewer für die Nutzung der Attachment Preview:
 ```
@@ -45,3 +46,18 @@ Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und l�
 In diesem Fall wurde für den ersten Tab die Grid-Darstellung für die Attribute der Features gewählt. Wird stattdessen der Wert ```grid: false``` gesetzt, so greift das definierte custom template (```template```).
 
 Über die Eigenschaft ```showImagePreview``` kann festgelegt werden, ob für Bilder-Attachments eine Vorschau gezeigt werden soll. Dieser Wert ist standardmäßig auf ```true``` gesetzt.
+
+Development Guide
+------------------
+### Define the mapapps remote base
+Before you can run the project you have to define the mapapps.remote.base property in the pom.xml-file:
+`<mapapps.remote.base>http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%</mapapps.remote.base>`
+
+##### Other methods to to define the mapapps.remote.base property.
+1. Goal parameters
+`mvn install -Dmapapps.remote.base=http://%YOURSERVER%/ct-mapapps-webapp-%VERSION%`
+
+2. Build properties
+Change the mapapps.remote.base in the build.properties file and run:
+`mvn install -Denv=dev -Dlocal.configfile=%ABSOLUTEPATHTOPROJECTROOT%/build.properties`
+
