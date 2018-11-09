@@ -3,6 +3,8 @@ The attachment preview bundle enables the user to access a feature's attributes 
 
 The bundle uses the ContentRule interface of the contentviewer bundle and provides a very similar configuration. The first tab is still configurable and able to display the feature's attributes in a grid or custom layout.
 
+❗️ This bundle is no longer needed for map.apps line 4 apps. Showing attachments in a popup is a map.apps core functionality. ❗️
+
 Sample App
 ------------------
 http://www.mapapps.de/mapapps/resources/apps/downloads_tabcontent/index.html
