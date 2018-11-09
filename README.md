@@ -7,7 +7,7 @@ The bundle uses the ContentRule interface of the contentviewer bundle and provid
 
 Sample App
 ------------------
-http://www.mapapps.de/mapapps/resources/apps/downloads_tabcontent/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_tabcontent/index.html
 
 Installation Guide (DE)
 --------------
