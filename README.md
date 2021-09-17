@@ -5,10 +5,6 @@ The bundle uses the ContentRule interface of the contentviewer bundle and provid
 
 ❗️ This bundle is no longer needed for map.apps line 4 apps. Showing attachments in a popup is a map.apps core functionality. ❗️
 
-Sample App
-------------------
-https://demos.conterra.de/mapapps/resources/apps/downloads_tabcontent/index.html
-
 Installation Guide (DE)
 --------------
 Das Attachment-Preview-Bundle nutzt den bereits vorhandenen contentviewer und lässt sich auch über diesen Konfigurieren. Die Beispielkonfiguration der Sample App zeigt den Aufbau des contentviewer für die Nutzung der Attachment Preview:
